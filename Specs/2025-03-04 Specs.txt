@@ -1,0 +1,96 @@
+**Technical Specification: Automated News Platform**
+
+---
+
+## **1. Project Overview**
+
+### **1.1 High-Level Vision**
+The Automated News Platform is designed to **fetch, rewrite, and publish current events** from selected sources, particularly **HS.fi and YLE.fi**. The service will scan articles from RSS feeds, extract full content, analyze them with AI, and generate rewritten articles **aligned with a specified alternative perspective**.
+
+The rewritten content will be reviewed by **internal editors** before being published. The platform must ensure **censorship resistance**, **scalability**, and **cost efficiency**, while offering easy access for users without technical barriers (e.g., no crypto wallets required).
+
+---
+
+## **2. Core Features & Functionalities**
+
+### **2.1 News Article Fetching**
+- The platform **fetches articles once per day** from:
+  - **HS.fi RSS Feeds** ([https://www.hs.fi/info/art-2000006426059.html](https://www.hs.fi/info/art-2000006426059.html))
+  - **YLE.fi (Future integration planned)**
+- Extracts **full article text** from URLs found in RSS feeds.
+- Stores extracted articles in a **PostgreSQL database**.
+- **Retries failed RSS requests** up to 3 times.
+
+### **2.2 AI-Powered Article Rewriting**
+- Uses **TurkuNLP 13B (Cloud-hosted)** for rewriting articles **without self-hosting**.
+- The AI model rewrites content based on a **specified alternative perspective**:
+  - **Nationalistic**
+  - **Fiscally conservative**
+  - **Against uncontrolled mass immigration**
+  - **Anti-Russia**
+- Ensures **no direct copying** from original articles.
+- The rewritten content is stored in the database.
+- Editors **review and approve** articles before publishing.
+
+### **2.3 Human-Written Editorial & Opinion Pieces**
+- Internal editors can manually write and publish articles.
+- These will be stored separately from AI-generated articles.
+
+### **2.4 Content Storage & Blockchain Integration**
+- Articles are **stored in PostgreSQL**.
+- Only **article hashes** are stored on **a blockchain** for verification.
+- Allows for **correction of mistakes** after publishing while maintaining integrity.
+
+### **2.5 Monetization Strategy**
+- **Ad-based revenue model** (regular ads and premium ads for paid subscribers).
+- **Subscription model** (users get fewer ads but not ad-free).
+- **Donations & Crowdfunding** (optional future implementation).
+
+---
+
+## **3. Technical Architecture**
+
+### **3.1 Tech Stack**
+| Component               | Technology Used |
+|-------------------------|----------------|
+| Backend Framework      | **FastAPI (Python)** |
+| Database               | **PostgreSQL** |
+| Web Scraping           | **BeautifulSoup, Requests** |
+| AI Model               | **TurkuNLP 13B (Cloud-hosted API)** |
+| Blockchain Verification | **Only article hashes stored** |
+| Frontend (Planned)     | **React (Future implementation)** |
+| Hosting (Planned)      | **Cloud provider (To be decided)** |
+
+---
+
+## **4. Development Workflow**
+
+### **4.1 Coding Environment Setup**
+- The user is using **VS Code** for development.
+- The project runs on **macOS 15.3.1 (24D70)**.
+- The Python environment is set up using **virtual environments (`venv`)**.
+- The user has **basic coding skills** and requires **explicit, step-by-step instructions**.
+
+### **4.2 Current Progress**
+✅ **Implemented:**
+- **PostgreSQL setup** (working database integration).
+- **RSS Scraper with full article extraction** (HS.fi working, YLE.fi pending).
+- **Retry mechanism for failed RSS fetches.**
+- **Successful integration with BeautifulSoup for article extraction.**
+
+🚀 **Next Steps:**
+- **Integrate AI model (TurkuNLP 13B) via cloud API.**
+- **Implement article rewriting logic.**
+- **Store rewritten articles in PostgreSQL.**
+- **Implement editor approval system.**
+
+---
+
+## **5. How to Use This Document in a New Chat**
+To continue coding efficiently in a new chat, follow these steps:
+1. **Copy & Paste This Document** into the new chat.
+2. **Ask for help on a specific part** (e.g., "I need to integrate TurkuNLP for article rewriting").
+3. **Follow step-by-step instructions for coding each feature.**
+
+By following this process, the new chat will **immediately understand the full project context** and provide **accurate answers** without missing any requirements. 🚀
+

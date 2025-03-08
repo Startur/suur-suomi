@@ -1,0 +1,30 @@
+2025-03-07 12:47:05,566 - INFO - ✅ No selected articles to rewrite. (Double-check database!)
+2025-03-07 12:51:06,083 - INFO - ✅ No selected articles to rewrite. (Double-check database!)
+2025-03-07 12:54:01,839 - INFO - 🔹 Articles selected for rewriting: [2, 5, 6, 10, 9, 20, 25, 1]
+2025-03-07 12:54:17,169 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:54:17,182 - INFO - ✅ Saving rewritten article 2: **Alkuperäinen uutinen:**
+
+Suomen hallitus on päättänyt lisätä rahoitusta uusiutuvan energian hankke...
+2025-03-07 12:54:18,908 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:54:18,911 - INFO - ✅ Saving rewritten article 5: Tietenkin, mutta tarvitsen alkuperäisen uutisen sisällön, jotta voin kirjoittaa sen uudelleen toivom...
+2025-03-07 12:54:33,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:54:33,861 - INFO - ✅ Saving rewritten article 6: Ilman alkuperäistä uutista en voi suoranaisesti uudelleenkirjoittaa sitä, mutta voin antaa yleisiä o...
+2025-03-07 12:54:35,812 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:54:35,815 - INFO - ✅ Saving rewritten article 10: Toki, voitko ystävällisesti antaa alkuperäisen uutisen, jonka haluat minun kirjoittavan uudelleen? N...
+2025-03-07 12:54:50,241 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:54:50,244 - INFO - ✅ Saving rewritten article 9: **Alkuperäinen uutinen:**
+
+Valtioneuvosto on päättänyt lisätä rahoitusta uusiutuviin energialähteisi...
+2025-03-07 12:55:02,123 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:55:02,127 - INFO - ✅ Saving rewritten article 20: **Alkuperäinen uutinen:**
+
+Valtioneuvosto on päättänyt lisätä rahoitusta uusiutuvan energian hankkei...
+2025-03-07 12:55:14,947 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:55:14,965 - INFO - ✅ Saving rewritten article 25: **Alkuperäinen uutinen:**
+
+Valtioneuvosto on päättänyt lisätä investointeja uusiutuvaan energiaan os...
+2025-03-07 12:55:29,156 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-07 12:55:29,160 - INFO - ✅ Saving rewritten article 1: **Alkuperäinen uutinen:**
+
+Valtion budjetista on päätetty lisätä rahoitusta uusiutuvan energian hank...
+2025-03-07 12:55:29,162 - INFO - ✅ Batch processing completed successfully.
