@@ -21,26 +21,28 @@ Unlike traditional media platforms, this system **stores articles permanently on
 
 ## **📂 Project Architecture**
 ```
-/project-root
-│── /backend
-│   ├── scraper.py         # Fetches RSS feeds and extracts articles
-│   ├── extract_article.py # Extracts full content from URLs
-│   ├── rewrite_ai.py      # AI rewriting module
-│   ├── blockchain.py      # BSV integration (on-chain storage, micropayments)
-│   ├── models.py          # SQLAlchemy database models
-│   ├── database.py        # PostgreSQL connection setup
-│   ├── api.py             # FastAPI endpoints for frontend & external use
-│── /frontend
-│   ├── package.json       # React dependencies
-│   ├── index.js           # React entry point
-│   ├── App.js             # Main React component
-│   ├── components/        # React UI components
-│   ├── pages/             # Page-level components
-│   ├── services/          # API calls & data fetching
-│── /docs                  # Documentation files
+/NEWS_PLATFORM
+│── /news-dashboard        # Frontend dashboard for monitoring and management
+│── /node_modules          # Frontend dependencies
+│── /Specs                 # Specification and documentation files
+│── /venv                  # Python virtual environment
 │── .env                   # Environment variables
-│── requirements.txt        # Python dependencies
-│── master_document.md      # This file
+│── ai_rewriter.py         # AI-powered content rewriting
+│── batch_rewrite.log      # Logs for batch article rewriting
+│── batch_rewrite.py       # Automates AI rewriting for multiple articles
+│── database.py            # PostgreSQL connection setup
+│── db_setup.py            # Database initialization script
+│── extract_article.py     # Extracts full content from URLs
+│── fastapi.log            # FastAPI server logs
+│── main.py                # Entry point for backend services
+│── master_document.md     # This file
+│── models.py              # SQLAlchemy database models
+│── package-lock.json      # Frontend dependency lock file
+│── package.json           # Frontend dependency list
+│── README.md              # General project information
+│── scraper.py             # Fetches RSS feeds and extracts articles
+│── select_articles.py     # Filters and selects relevant articles
+│── test_ai.py             # AI model testing script
 ```
 
 ---
