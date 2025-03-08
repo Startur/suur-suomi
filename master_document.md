@@ -45,6 +45,75 @@ Unlike traditional media platforms, this system **stores articles permanently on
 
 ---
 
+## **🛢 Database Schema (PostgreSQL)**
+The platform uses **PostgreSQL** for structured data storage. Below is the full schema with all tables.
+
+### **🔹 `articles` Table (Stores News Articles)**
+```sql
+CREATE TABLE articles (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    url TEXT UNIQUE NOT NULL,
+    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    rewritten BOOLEAN DEFAULT FALSE,
+    bsv_txid TEXT UNIQUE,  -- Blockchain transaction ID for censorship resistance
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### **🔹 `users` Table (Manages System Users)**
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    role VARCHAR(20) CHECK (role IN ('admin', 'editor', 'reader')) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### **🔹 `transactions` Table (Tracks Payments via BSV)**
+```sql
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    amount DECIMAL(10,2) NOT NULL,
+    bsv_txid TEXT UNIQUE NOT NULL,
+    status VARCHAR(20) CHECK (status IN ('pending', 'confirmed', 'failed')) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### **🔹 `api_keys` Table (For External API Access)**
+```sql
+CREATE TABLE api_keys (
+    id SERIAL PRIMARY KEY,
+    key TEXT UNIQUE NOT NULL,
+    owner VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+## **🔑 Database Users & Access Roles**
+### **List of Database Users**
+| Username     | Role     | Permissions |
+|-------------|---------|-------------|
+| `admin_user`  | `SUPERUSER` | Full access |
+| `editor_user` | `EDITOR` | Can modify articles, but no DB admin rights |
+| `reader_user` | `READER` | Read-only access |
+
+### **User Privileges**
+- **`admin_user`**: Full control (create, update, delete tables, manage users).  
+- **`editor_user`**: Can insert and update articles but **cannot delete** or manage users.  
+- **`reader_user`**: Read-only access to published articles.  
+
+---
+
+
 ## **🛠 Technology Stack**
 ### **Backend**
 - **FastAPI** – Lightweight, fast, and scalable API framework  
