@@ -5,13 +5,15 @@ from datetime import datetime
 
 # Load API key from environment variable
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("❌ OpenAI API key is missing. Please set the OPENAI_API_KEY environment variable.")
 
-# Database connection settings (update credentials)
+# Database connection settings (securely using environment variables)
 DB_SETTINGS = {
-    "dbname": "news_platform",
-    "user": "news_admin",
-    "password": "iuvbiu23223", 
-    "host": "localhost"
+    "dbname": os.getenv("DB_NAME", "news_platform"),
+    "user": os.getenv("DB_USER", "news_admin"),
+    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST", "localhost")
 }
 
 def save_to_database(original_article_id, rewritten_text):
@@ -54,7 +56,6 @@ def rewrite_article(original_article_id, article_text):
 
     ✍️ **Uudelleenkirjoitettu uutinen:**
     """
-
 
     try:
         response = client.chat.completions.create(

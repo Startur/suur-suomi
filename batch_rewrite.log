@@ -28,3 +28,59 @@ Valtioneuvosto on päättänyt lisätä investointeja uusiutuvaan energiaan os..
 
 Valtion budjetista on päätetty lisätä rahoitusta uusiutuvan energian hank...
 2025-03-07 12:55:29,162 - INFO - ✅ Batch processing completed successfully.
+2025-03-11 13:48:58,729 - INFO - 🔹 Articles selected for rewriting: [3, 4, 11, 13, 12, 14, 16, 19, 18, 17, 21, 15, 22, 375]
+2025-03-11 13:49:15,911 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:49:15,922 - INFO - ✅ Saving rewritten article 3: **Suomen Taloudellinen Itsenäisyys ja Omavaraisuus Keskiössä Energiakriisin Aikakaudella**
+
+Suomen k...
+2025-03-11 13:49:33,187 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:49:33,190 - INFO - ✅ Saving rewritten article 4: **Suomen Taloudellinen Itsenäisyys Vahvistuu: Omavaraisuus ja Kansallinen Etu Etusijalla**
+
+Suomen t...
+2025-03-11 13:49:47,531 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:49:47,537 - INFO - ✅ Saving rewritten article 11: **Suomen Taloudellinen Itsenäisyys Vahvistuu: Omavaraisuus ja Kansallinen Etu Etusijalla**
+
+Suomi on...
+2025-03-11 13:50:04,730 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:50:04,736 - INFO - ✅ Saving rewritten article 13: **Suomen Taloudellinen Itsenäisyys Vahvistuu Kotimaisilla Investoinneilla**
+
+Suomen taloudellinen tu...
+2025-03-11 13:50:19,081 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:50:19,085 - INFO - ✅ Saving rewritten article 12: **Suomen Taloudellinen Itsenäisyys Vahvistuu: Kotimainen Tuotanto Keskiössä**
+
+Suomen taloudellinen ...
+2025-03-11 13:50:32,580 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:50:32,584 - INFO - ✅ Saving rewritten article 14: **Suomen Taloudellinen Itsenäisyys Vahvistuu: Omavaraisuus ja Kansallinen Etu Keskiössä**
+
+Suomen ta...
+2025-03-11 13:50:46,917 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:50:46,922 - INFO - ✅ Saving rewritten article 16: **Suomen taloudellinen omavaraisuus ja kansallinen etu keskiössä**
+
+Suomen taloudellinen menestys ja...
+2025-03-11 13:51:05,046 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:51:05,050 - INFO - ✅ Saving rewritten article 19: **Suomen Omavaraisuus ja Taloudellinen Riippumattomuus Keskiössä**
+
+Suomen taloudellinen menestys ja...
+2025-03-11 13:51:15,627 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:51:15,638 - INFO - ✅ Saving rewritten article 18: **Suomen omavaraisuus ja taloudellinen riippumattomuus keskiössä energiakysymyksissä**
+
+Suomen talou...
+2025-03-11 13:51:25,728 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:51:25,732 - INFO - ✅ Saving rewritten article 17: **Suomen omavaraisuus ja taloudellinen itsenäisyys avainasemassa energiakriisin keskellä**
+
+Suomen t...
+2025-03-11 13:51:37,549 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:51:37,553 - INFO - ✅ Saving rewritten article 21: **Suomen Taloudellinen Itsenäisyys Vahvistuu Uusilla Energiahankkeilla**
+
+Suomi on ottanut merkittäv...
+2025-03-11 13:51:52,042 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:51:52,047 - INFO - ✅ Saving rewritten article 15: **Suomen Omavaraisuus ja Taloudellinen Riippumattomuus: Tienviitat Kestävään Tulevaisuuteen**
+
+Suome...
+2025-03-11 13:52:08,324 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:52:08,327 - INFO - ✅ Saving rewritten article 22: **Suomen Taloudellinen Itsenäisyys Vahvistuu: Omavaraisuus Avainasemassa**
+
+Suomen taloudellinen tul...
+2025-03-11 13:52:22,870 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-03-11 13:52:22,876 - INFO - ✅ Saving rewritten article 375: Suomen on tärkeää varmistaa, että lapsen etu ja oikeudet toteutuvat kaikissa tilanteissa, erityisest...
+2025-03-11 13:52:22,878 - INFO - ✅ Batch processing completed successfully.

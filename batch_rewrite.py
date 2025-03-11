@@ -1,13 +1,14 @@
 import psycopg2
 from ai_rewriter import rewrite_article
 import logging
+import os
 
 # Database connection settings
 DB_SETTINGS = {
-    "dbname": "news_platform",
-    "user": "news_admin",
-    "password": "your_password",  # Replace with actual credentials
-    "host": "localhost"
+    "dbname": os.getenv("DB_NAME", "news_platform"),
+    "user": os.getenv("DB_USER", "news_admin"),
+    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST", "localhost")
 }
 
 # Configure logging
@@ -22,8 +23,8 @@ def process_batch():
     conn = psycopg2.connect(**DB_SETTINGS)
     cursor = conn.cursor()
 
-    # ✅ Fetch selected articles and print for debugging
-    cursor.execute("SELECT id, content FROM articles WHERE selected_for_rewrite = TRUE AND id NOT IN (SELECT original_article_id FROM rewritten_articles)")
+    # ✅ Fetch articles where rewrite_status is 'pending'
+    cursor.execute("SELECT id, content FROM articles WHERE rewrite_status = 'pending' AND id NOT IN (SELECT original_article_id FROM rewritten_articles)")
     articles = cursor.fetchall()
 
     if not articles:
@@ -46,11 +47,17 @@ def process_batch():
         logging.info(f"✅ Saving rewritten article {article_id}: {rewritten_text[:100]}...")  # Print first 100 chars
         print(f"✅ Saving rewritten article {article_id}: {rewritten_text[:100]}...")
 
+        # Insert rewritten article
         cursor.execute(
             "INSERT INTO rewritten_articles (original_article_id, rewritten_content, editor_approved, created_at) VALUES (%s, %s, %s, NOW())",
             (article_id, rewritten_text, False)
         )
         conn.commit()
+
+        # ✅ Update rewrite_status to 'completed' after rewriting
+        cursor.execute("UPDATE articles SET rewrite_status = 'completed' WHERE id = %s", (article_id,))
+        conn.commit()
+        print(f"✅ Marked article {article_id} as 'completed' after rewriting.")
 
     cursor.close()
     conn.close()

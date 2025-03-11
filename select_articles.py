@@ -1,11 +1,12 @@
 import psycopg2
+import os
 
-# Database connection settings (update credentials)
+# Database connection settings (using environment variables securely)
 DB_SETTINGS = {
-    "dbname": "news_platform",
-    "user": "news_admin",
-    "password": "iuvbiu23223",  # Replace with your actual PostgreSQL password
-    "host": "localhost"
+    "dbname": os.getenv("DB_NAME", "news_platform"),
+    "user": os.getenv("DB_USER", "news_admin"),
+    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST", "localhost")
 }
 
 def list_articles():
@@ -35,15 +36,19 @@ def select_articles():
         print("⚠️ No articles selected.")
         return
 
-    article_ids = [int(i) for i in article_ids.split(",")]
+    try:
+        article_ids = [int(i) for i in article_ids.split(",")]
+    except ValueError:
+        print("❌ Invalid input. Please enter valid article IDs.")
+        return
 
     conn = psycopg2.connect(**DB_SETTINGS)
     cursor = conn.cursor()
 
     query = "UPDATE articles SET selected_for_rewrite = TRUE WHERE id = ANY(%s)"
     cursor.execute(query, (article_ids,))
-
     conn.commit()
+
     cursor.close()
     conn.close()
 
