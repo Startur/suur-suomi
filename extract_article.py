@@ -6,11 +6,10 @@ from models import Article
 
 # HS.fi RSS Feeds
 HS_RSS_FEEDS = [
-    "https://www.hs.fi/rss/tuoreimmat.xml",  # Latest news
     "http://www.hs.fi/rss/suomi.xml",  # Domestic
     "http://www.hs.fi/rss/maailma.xml",  # World news
-    "https://www.hs.fi/rss/politiikka.xml"  # Politics
-    "http://www.hs.fi/rss/talous.xml"  # Economy
+    "https://www.hs.fi/rss/politiikka.xml", # Politics
+    "http://www.hs.fi/rss/talous.xml",  # Economy
 ]
 
 def scrape_hs_rss():

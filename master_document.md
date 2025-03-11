@@ -44,6 +44,12 @@ Unlike traditional media platforms, this system **stores articles permanently on
 ---
 
 ## **🛢 Database Schema (PostgreSQL)**
+📌 **Database Locations:**
+- **Development:** Local PostgreSQL database (`localhost`).
+- **Production:** Confirmed as **AWS RDS or DigitalOcean Managed Databases**.
+- **Blockchain Storage:** Article hashes stored on **BSV blockchain** for verification.
+- **Backup Strategy:** Automated **daily backups to S3 storage**.
+
 The platform uses **PostgreSQL** for structured data storage. Below is the full schema with all tables.
 
 ### **🔹 `articles` Table (Stores News Articles)**
@@ -54,7 +60,7 @@ CREATE TABLE articles (
     content TEXT NOT NULL,
     url TEXT UNIQUE NOT NULL,
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    rewrite_status TEXT CHECK (rewrite_status IN ('not_selected', 'pending', 'completed')) DEFAULT 'not_selected',
+    rewrite_status TEXT CHECK (rewrite_status IN ('not_selected', 'pending', 'completed')) DEFAULT 'not_selected',  -- Track AI processing
     bsv_txid TEXT UNIQUE,  -- Blockchain transaction ID for censorship resistance
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -97,6 +103,11 @@ CREATE TABLE api_keys (
 ---
 
 ## **🔑 Database Users & Access Roles**
+📌 **Database Access Information:**
+- **Local Database:** Accessible via `localhost` using PostgreSQL.
+- **Production Database:** Will require **IAM-based access control** and **SSL connections**.
+- **Blockchain Verification:** Article hashes can be verified via their **BSV transaction ID (TXID)**.
+
 ### **List of Database Users**
 | Username     | Role     | Permissions |
 |-------------|---------|-------------|
@@ -110,7 +121,6 @@ CREATE TABLE api_keys (
 - **`reader_user`**: Read-only access to published articles.  
 
 ---
-
 
 ## **🛠 Technology Stack**
 ### **Backend**
@@ -141,7 +151,7 @@ CREATE TABLE api_keys (
 ## **🔄 Data Flow & Process**
 1️⃣ **Fetch articles from RSS feeds (`scraper.py`)**  
 2️⃣ **Extract full content from article URLs (`extract_article.py`)**  
-3️⃣ **AI-enhanced rewriting of content (`rewrite_ai.py`)**  
+3️⃣ **AI-enhanced rewriting of content (`ai_rewriter.py`)**  
 4️⃣ **Store structured articles in PostgreSQL (`models.py`)**  
 5️⃣ **Publish full article on BSV (`blockchain.py`)**  
 6️⃣ **Expose API for frontend & third-party integrations (`api.py`)**  
@@ -195,7 +205,7 @@ pip install bsv
 
 ### **3️⃣ Run FastAPI Backend**
 ```bash
-uvicorn api:app --reload --port 8000
+uvicorn main:app --reload --port 8000
 ```
 
 ### **4️⃣ Start PostgreSQL**
@@ -205,9 +215,8 @@ sudo systemctl start postgresql
 
 ### **5️⃣ Install & Run Frontend**
 ```bash
-cd frontend
-npm install
-npm run dev
+cd news-dashboard
+npm start
 ```
 
 ### **6️⃣ Environment Variables (`.env` file)**
@@ -223,6 +232,50 @@ DB_PASSWORD=your_db_password_here
 DB_HOST=localhost
 ```
 
+### **PostgreSQL Setup for macOS**
+
+On macOS, PostgreSQL is installed via **Homebrew**, follow these steps to manage the PostgreSQL service:
+
+1. **Check if PostgreSQL is Installed via Homebrew**:
+   If you installed PostgreSQL using Homebrew, use the following command to list services:
+   ```zsh
+   brew services list
+   ```
+
+2. **Start PostgreSQL Using Homebrew**:
+   To start PostgreSQL, run:
+   ```zsh
+   brew services start postgresql
+   ```
+
+3. **Check PostgreSQL Status**:
+   To confirm that PostgreSQL is running, use:
+   ```zsh
+   brew services list
+   ```
+
+4. **Access PostgreSQL**:
+   Once PostgreSQL is running, you can connect to it using:
+   ```zsh
+   psql postgres
+   ```
+
+5. **Install PostgreSQL via Homebrew (if needed)**:
+   If you haven't installed PostgreSQL yet, use the following command to install it:
+   ```zsh
+   brew install postgresql
+   ```
+
+After installing, start PostgreSQL using:
+   ```zsh
+   brew services start postgresql
+   ```
+
+This ensures PostgreSQL is properly set up and running on macOS using Homebrew.
+
+**Login directly to News Platform database**
+psql -U news_admin -d news_platform
+
 ---
 
 ## **💰 Monetization Strategy**
@@ -230,6 +283,8 @@ DB_HOST=localhost
 - **Crypto tipping system** for content creators  
 - **BSV-based smart contract licensing** for media syndication  
 - **Subscription-based access** to exclusive AI-generated reports  
+  - Users who subscribe **still see ads, but fewer of them**.  
+  - BSV micropayments will be **integrated for pay-per-article access**.  
 
 ---
 
@@ -252,17 +307,24 @@ DB_HOST=localhost
 🔲 Connect frontend with backend API  
 🔲 Implement BSV integration  
 🔲 Deploy smart contract for article payments  
+🔲 Implement AI integration with ChatGPT-4o API.  
+🔲 Finalize database schema for rewritten articles.  
+🔲 Develop API endpoints to serve rewritten content.  
+🔲 Plan frontend integration with AI-rewritten articles.  
 
 ---
 
 ## **📌 Next Steps**
-🔹 Implement AI rewriting module  
-🔹 Finalize API & database schema  
-🔹 Complete React UI integration  
-🔹 Deploy BSV-powered smart contracts  
+🔹 Implement AI rewriting module with **ChatGPT-4o API**.  
+🔹 Finalize API & database schema.  
+🔹 Complete React UI integration.  
+🔹 Deploy BSV-powered smart contracts.  
 
 ---
 
 This **master document** ensures your project remains **structured, scalable, and censorship-resistant**. Store it in **GitHub** and update as needed.  
+
+### Shell Usage
+From now on, all instructions will be provided in **zsh**.  
 
 Would you like help drafting the **BSV smart contract logic** for handling payments and licensing? 🚀

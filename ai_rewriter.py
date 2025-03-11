@@ -35,6 +35,49 @@ def save_to_database(original_article_id, rewritten_text):
     except Exception as e:
         print(f"❌ Database error: {e}")
 
+def update_article_status_to_rewritten(original_article_id):
+    """Updates the rewrite_status of the article to 'rewritten' in the database."""
+    try:
+        conn = psycopg2.connect(**DB_SETTINGS)
+        cursor = conn.cursor()
+
+        query = """
+        UPDATE articles
+        SET rewrite_status = %s
+        WHERE id = %s
+        """
+        cursor.execute(query, ('rewritten', original_article_id))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print(f"✅ Article {original_article_id} status updated to 'rewritten'.")
+    except Exception as e:
+        print(f"❌ Failed to update article status: {e}")
+
+def select_articles(article_id):
+    """Allows user to manually select which articles should be rewritten and updates their status."""
+    try:
+        conn = psycopg2.connect(**DB_SETTINGS)
+        cursor = conn.cursor()
+
+        # Update the article status to 'selected_for_rewriting'
+        query = """
+        UPDATE articles
+        SET rewrite_status = %s
+        WHERE id = %s
+        """
+        cursor.execute(query, ('selected_for_rewriting', article_id))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        print(f"✅ Article {article_id} selected for rewriting.")
+
+    except Exception as e:
+        print(f"❌ Failed to select article {article_id}: {e}")
+
 def rewrite_article(original_article_id, article_text):
     """Rewrites the article using OpenAI's GPT-4 and saves it to the database."""
 
@@ -68,6 +111,10 @@ def rewrite_article(original_article_id, article_text):
 
         rewritten_text = response.choices[0].message.content.strip()
         print(f"🔹 AI Output for article {original_article_id}: {rewritten_text[:100]}...")  # Print first 100 chars
+        
+        save_to_database(original_article_id, rewritten_text)
+        update_article_status_to_rewritten(original_article_id)
+        
         return rewritten_text
 
     except Exception as e:

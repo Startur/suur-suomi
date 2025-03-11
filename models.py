@@ -12,5 +12,6 @@ class Article(Base):
     source = Column(String, nullable=False)
     author = Column(String, nullable=True)
     published_at = Column(DateTime, nullable=True)
+    rewrite_status = Column(String, default='not_selected')
     created_at = Column(DateTime, default=datetime.utcnow)
     selected_for_rewrite = Column(Boolean, default=False)
