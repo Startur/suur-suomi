@@ -1,7 +1,3 @@
-Here is the **fully rewritten `master_document.md`** file, now properly incorporating **BSV (Bitcoin SV) as the blockchain layer**, **correct project architecture**, and **all previous discussions**. 🚀
-
----
-
 # **🚀 Automated News & Media Platform - Master Document**  
 _Last updated: 2025-03-08_
 
@@ -220,6 +216,11 @@ DATABASE_URL=postgresql://user:password@localhost/dbname
 VITE_API_BASE_URL=http://localhost:8000
 BSV_NODE_URL=https://bsv.network
 BSV_WALLET_PRIVATE_KEY=your_private_key_here
+OPENAI_API_KEY=your_openai_key_here
+DB_NAME=news_platform
+DB_USER=news_admin
+DB_PASSWORD=your_db_password_here
+DB_HOST=localhost
 ```
 
 ---
