@@ -54,7 +54,7 @@ CREATE TABLE articles (
     content TEXT NOT NULL,
     url TEXT UNIQUE NOT NULL,
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    rewritten BOOLEAN DEFAULT FALSE,
+    rewrite_status TEXT CHECK (rewrite_status IN ('not_selected', 'pending', 'completed')) DEFAULT 'not_selected',
     bsv_txid TEXT UNIQUE,  -- Blockchain transaction ID for censorship resistance
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
