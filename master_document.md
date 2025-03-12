@@ -154,7 +154,7 @@ CREATE TABLE api_keys (
 3️⃣ **Select articles for rewriting (`select_articles.py`)**
 4  **AI-enhanced rewriting of content (`ai_rewriter.py`)**  
 5 **Store structured articles in PostgreSQL (`models.py`)**  
-6 **Publish article hashes on BSV (`blockchain.py`)**  
+6 **Publish full article on BSV (`blockchain.py`)**  
 7  **Expose API for frontend & third-party integrations (`main.py`)**  
 8 **Fetch and display content in React frontend (`services/api.js`)**  
 9 **Allow users to pay per article or tip using BSV micropayments**  
