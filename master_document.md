@@ -151,12 +151,13 @@ CREATE TABLE api_keys (
 ## **🔄 Data Flow & Process**
 1️⃣ **Fetch articles from RSS feeds (`scraper.py`)**  
 2️⃣ **Extract full content from article URLs (`extract_article.py`)**  
-3️⃣ **AI-enhanced rewriting of content (`ai_rewriter.py`)**  
-4️⃣ **Store structured articles in PostgreSQL (`models.py`)**  
-5️⃣ **Publish full article on BSV (`blockchain.py`)**  
-6️⃣ **Expose API for frontend & third-party integrations (`api.py`)**  
-7️⃣ **Fetch and display content in React frontend (`services/api.js`)**  
-8️⃣ **Allow users to pay per article or tip using BSV micropayments**  
+3️⃣ **Select articles for rewriting (`select_articles.py`)**
+4  **AI-enhanced rewriting of content (`ai_rewriter.py`)**  
+5 **Store structured articles in PostgreSQL (`models.py`)**  
+6 **Publish article hashes on BSV (`blockchain.py`)**  
+7  **Expose API for frontend & third-party integrations (`main.py`)**  
+8 **Fetch and display content in React frontend (`services/api.js`)**  
+89 **Allow users to pay per article or tip using BSV micropayments**  
 
 ---
 
