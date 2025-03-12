@@ -157,7 +157,7 @@ CREATE TABLE api_keys (
 6 **Publish article hashes on BSV (`blockchain.py`)**  
 7  **Expose API for frontend & third-party integrations (`main.py`)**  
 8 **Fetch and display content in React frontend (`services/api.js`)**  
-89 **Allow users to pay per article or tip using BSV micropayments**  
+9 **Allow users to pay per article or tip using BSV micropayments**  
 
 ---
 
